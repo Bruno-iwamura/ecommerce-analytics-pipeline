@@ -1,0 +1,86 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Pedidos com timestamps padronizados"
+    columns:
+      - name: order_id
+        description: "Identificador único do pedido"
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_id
+        data_tests:
+          - not_null
+      - name: order_status
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['delivered', 'shipped', 'canceled', 'unavailable',
+                       'invoiced', 'processing', 'created', 'approved']
+
+  - name: stg_customers
+    description: "Clientes com colunas renomeadas"
+    columns:
+      - name: customer_id
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_unique_id
+        data_tests:
+          - not_null
+
+  - name: stg_order_items
+    description: "Itens de pedido com preços e frete"
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null
+      - name: product_id
+        data_tests:
+          - not_null
+      - name: price
+        data_tests:
+          - not_null
+
+  - name: stg_order_payments
+    description: "Pagamentos por pedido"
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null
+      - name: amount
+        data_tests:
+          - not_null
+
+  - name: stg_order_reviews
+    description: "Avaliações dos clientes"
+    columns:
+      - name: review_id
+        data_tests:
+          - not_null
+      - name: order_id
+        data_tests:
+          - not_null
+      - name: score
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3, 4, 5]
+              quote: false
+
+  - name: stg_products
+    description: "Catálogo de produtos"
+    columns:
+      - name: product_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_sellers
+    description: "Vendedores cadastrados"
+    columns:
+      - name: seller_id
+        data_tests:
+          - unique
+          - not_null

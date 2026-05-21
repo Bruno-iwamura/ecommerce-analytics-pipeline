@@ -1,0 +1,32 @@
+version: 2
+
+sources:
+  - name: raw
+    database: ecommerce-analytics-497016
+    schema: raw
+    description: "Dados brutos da Olist carregados via Python"
+
+    tables:
+      - name: orders
+        description: "Pedidos realizados na plataforma Olist"
+
+      - name: customers
+        description: "Clientes que realizaram pedidos"
+
+      - name: order_items
+        description: "Itens individuais de cada pedido"
+
+      - name: order_payments
+        description: "Pagamentos associados aos pedidos"
+
+      - name: order_reviews
+        description: "Avaliações dos clientes após entrega"
+
+      - name: products
+        description: "Catálogo de produtos"
+
+      - name: sellers
+        description: "Vendedores cadastrados na plataforma"
+
+      - name: geolocation
+        description: "Dados de geolocalização por CEP"

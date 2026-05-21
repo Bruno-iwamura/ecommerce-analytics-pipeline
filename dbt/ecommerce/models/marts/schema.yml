@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: mart_orders_daily
+    description: "Volume e receita de pedidos agregados por dia"
+    columns:
+      - name: order_date
+        data_tests:
+          - unique
+          - not_null
+      - name: total_orders
+        data_tests:
+          - not_null
+      - name: gross_revenue
+        data_tests:
+          - not_null
+
+  - name: mart_customer_ltv
+    description: "Lifetime value e segmentação de clientes"
+    columns:
+      - name: customer_id
+        data_tests:
+          - unique
+          - not_null
+      - name: ltv_segment
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['high', 'mid', 'low']
+
+  - name: mart_delivery_performance
+    description: "Performance de entregas por dia"
+    columns:
+      - name: order_date
+        data_tests:
+          - unique
+          - not_null
+
+  - name: mart_product_revenue
+    description: "Receita e volume de vendas por produto"
+    columns:
+      - name: product_id
+        data_tests:
+          - unique
+          - not_null
