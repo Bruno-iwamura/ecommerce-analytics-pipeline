@@ -37,7 +37,7 @@ models:
           - not_null
 
   - name: mart_product_revenue
-    description: "Receita e volume de vendas por produto"
+    description: "Receita e volume de vendas por produto - Teste ediçao"
     columns:
       - name: product_id
         data_tests:
